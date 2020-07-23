@@ -6,12 +6,12 @@ import java.util.Queue;
 public class JobQueue {
     boolean stapling;
     boolean isFast;
-    int paperSize;
-    int paperColour;
-    int inkColour;
+    PaperSize paperSize;
+    PaperColour paperColour;
+    InkColour inkColour;
     Queue<Job> jobs;
 
-    public JobQueue(boolean stapling, boolean isFast, int paperSize, int paperColour, int inkColour) {
+    public JobQueue(boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
         this.stapling = stapling;
         this.isFast = isFast;
         this.paperSize = paperSize;
@@ -28,23 +28,23 @@ public class JobQueue {
         return isFast;
     }
 
-    public int getPaperSize() {
+    public PaperSize getPaperSize() {
         return paperSize;
     }
 
-    public int getPaperColour() {
+    public PaperColour getPaperColour() {
         return paperColour;
     }
 
-    public int getInkColour() {
+    public InkColour getInkColour() {
         return inkColour;
     }
 
     public void addJob(Job job){
-        jobs.add(job);
+        this.jobs.add(job);
     }
 
     public Job removeJob(){
-        return jobs.remove();
+        return this.jobs.remove();
     }
 }

@@ -1,15 +1,17 @@
 package com.company;
 
 public class Job {
+    String customerName;
     boolean stapling;
     boolean isFast;
-    int paperSize;
-    int paperColour;
-    int inkColour;
+    PaperSize paperSize;
+    PaperColour paperColour;
+    InkColour inkColour;
     int pageCount;
     int pagesLeft;
 
-    public Job(boolean stapling, boolean isFast, int paperSize, int paperColour, int inkColour, int pageCount) {
+    public Job(String customerName, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour, int pageCount) {
+        this.customerName = customerName;
         this.stapling = stapling;
         this.isFast = isFast;
         this.paperSize = paperSize;
@@ -19,6 +21,8 @@ public class Job {
         this.pagesLeft = pageCount;
     }
 
+    public String getCustomerName(){ return customerName; }
+
     public boolean needsStapling() {
         return stapling;
     }
@@ -27,15 +31,15 @@ public class Job {
         return isFast;
     }
 
-    public int getPaperSize() {
+    public PaperSize getPaperSize() {
         return paperSize;
     }
 
-    public int getPaperColour() {
+    public PaperColour getPaperColour() {
         return paperColour;
     }
 
-    public int getInkColour() {
+    public InkColour getInkColour() {
         return inkColour;
     }
 

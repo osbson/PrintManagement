@@ -3,12 +3,12 @@ package com.company;
 public class Printer {
     boolean stapling;
     boolean isFast;
-    int paperSize;
-    int paperColour;
-    int inkColour;
+    PaperSize paperSize;
+    PaperColour paperColour;
+    InkColour inkColour;
     boolean busy;
 
-    public Printer(boolean stapling, boolean isFast, int paperSize, int paperColour, int inkColour) {
+    public Printer(boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
         this.stapling = stapling;
         this.isFast = isFast;
         this.paperSize = paperSize;
@@ -25,15 +25,15 @@ public class Printer {
         return isFast;
     }
 
-    public int getPaperSize() {
+    public PaperSize getPaperSize() {
         return paperSize;
     }
 
-    public int getPaperColour() {
+    public PaperColour getPaperColour() {
         return paperColour;
     }
 
-    public int getInkColour() {
+    public InkColour getInkColour() {
         return inkColour;
     }
 
@@ -41,11 +41,11 @@ public class Printer {
         return busy;
     }
 
-    public void setPaperColour(int paperColour) {
+    public void setPaperColour(PaperColour paperColour) {
         this.paperColour = paperColour;
     }
 
-    public void setInkColour(int inkColour) {
+    public void setInkColour(InkColour inkColour) {
         this.inkColour = inkColour;
     }
 
