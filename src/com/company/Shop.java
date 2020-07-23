@@ -47,17 +47,11 @@ public class Shop {
     }
 
     private void createPrinters() {
-        Printer HPsuperfast = new Printer(true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black);
-        Printer SAMSUNG01 = new Printer(false, false, PaperSize.Medium, PaperColour.Yellow, InkColour.Red);
-        Printer SONYportable254 = new Printer(true, false, PaperSize.Small, PaperColour.Blue, InkColour.Red);
-        Printer CANON3000 = new Printer(true, false, PaperSize.Medium, PaperColour.White, InkColour.Blue);
-        Printer HPoriginals01 = new Printer(false, true, PaperSize.Large, PaperColour.White, InkColour.Black);
-        this.printers.add(HPsuperfast);
-        this.printers.add(SAMSUNG01);
-        this.printers.add(SONYportable254);
-        this.printers.add(CANON3000);
-        this.printers.add(HPoriginals01);
-
+        this.printers.add(new Printer("HPsuperfast", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black));
+        this.printers.add(new Printer("SAMSUNG01", false, false, PaperSize.Medium, PaperColour.Yellow, InkColour.Red));
+        this.printers.add(new Printer("SONYportable254", true, false, PaperSize.Small, PaperColour.Blue, InkColour.Red));
+        this.printers.add(new Printer("CANON3000", true, false, PaperSize.Medium, PaperColour.White, InkColour.Blue));
+        this.printers.add(new Printer("HPoriginals01", false, true, PaperSize.Large, PaperColour.White, InkColour.Black));
     }
 
     /* private void createQueues(){

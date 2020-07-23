@@ -1,6 +1,7 @@
 package com.company;
 
 public class Printer {
+    String name;
     boolean stapling;
     boolean isFast;
     PaperSize paperSize;
@@ -8,13 +9,18 @@ public class Printer {
     InkColour inkColour;
     boolean busy;
 
-    public Printer(boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
+    public Printer(String name, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
+        this.name = name;
         this.stapling = stapling;
         this.isFast = isFast;
         this.paperSize = paperSize;
         this.paperColour = paperColour;
         this.inkColour = inkColour;
         this.busy = false;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public boolean hasStapling() {
