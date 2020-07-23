@@ -19,6 +19,7 @@ public class Job {
         this.inkColour = inkColour;
         this.pageCount = pageCount;
         this.pagesLeft = pageCount;
+        System.out.println("Created " + this);
     }
 
     public String getCustomerName(){ return customerName; }
@@ -56,15 +57,20 @@ public class Job {
     }
 
     public String toString(){
-        String s = "";
-        s += "Job with following details for " + this.customerName + ":\n";
-        s += " - stapling: " + this.stapling + ", ";
-        s += "isFast: " + this.isFast + ", ";
-        s += "paperSize: " + this.paperSize + ", ";
-        s += "paperColour: " + this.paperColour + ", ";
-        s += "inkColour: " + this.inkColour + ", ";
-        s += "pageCount: " + this.pageCount + ", ";
-        s += "pagesLeft: " + this.pagesLeft + "\n";
+        String s = "Job(";
+        s += "customerName: " + this.customerName + ", ";
+        s += "staping: "      + this.stapling      + ", ";
+        s += "isFast: "       + this.isFast       + ", ";
+        s += "paperSize: "    + this.paperSize    + ", ";
+        s += "paperColour: "  + this.paperColour  + ", ";
+        s += "inkColor: "     + this.inkColour     + ", ";
+        s += "pageCount: "    + this.pageCount    + ", ";
+        s += "pagesLeft: "    + this.pagesLeft    + "";
+        s += ")";
         return s;
+    }
+
+    public JobQueue createQueue(){
+        return (new JobQueue(this.stapling, this.isFast, this.paperSize, this.paperColour, this.inkColour));
     }
 }

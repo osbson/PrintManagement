@@ -9,9 +9,7 @@ public class Shop {
 
     public Shop() {
         this.queues = new ArrayList<JobQueue>();
-        // this.createQueues();
         this.printers = new ArrayList<Printer>();
-        this.createPrinters();
     }
 
     public List getQueues() {
@@ -19,7 +17,8 @@ public class Shop {
         return null;
     }
 
-    public void newJob(Job job) {
+    public void newJob(String customerName, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour, int pageCount) {
+        Job job = new Job(customerName, stapling, isFast, paperSize, paperColour, inkColour, pageCount);
         //assign job to correct queue
         //find appropriate queue and add job to queue
         boolean added = false;
@@ -32,20 +31,30 @@ public class Shop {
         }
         //if no queues exist with config for job/no queues exist at all, create queue with correct config and add job
         if(!added){
-            JobQueue queue = new JobQueue(job.needsStapling(), job.isFast(), job.getPaperSize(), job.getPaperColour(), job.getInkColour());
+            JobQueue queue = job.createQueue();
             this.queues.add(queue);
             queue.addJob(job);
-            System.out.println(queue);
         }
-        System.out.println(job);
     }
 
-    private void createPrinters() {
-        this.printers.add(new Printer("HPsuperfast", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black));
-        this.printers.add(new Printer("SAMSUNG01", false, false, PaperSize.Medium, PaperColour.Yellow, InkColour.Red));
-        this.printers.add(new Printer("SONYportable254", true, false, PaperSize.Small, PaperColour.Blue, InkColour.Red));
-        this.printers.add(new Printer("CANON3000", true, false, PaperSize.Medium, PaperColour.White, InkColour.Blue));
-        this.printers.add(new Printer("HPoriginals01", false, true, PaperSize.Large, PaperColour.White, InkColour.Black));
+    public void newPrinter(String name, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
+        Printer printer = new Printer(name, stapling, isFast, paperSize, paperColour, inkColour);
+        this.printers.add(printer);
+        //Assigns queue to printer if queue with config exists
+        boolean added = false;
+        for(JobQueue queue: this.queues){
+            if(printer.checkQueue(queue)){
+                printer.setQueue(queue);
+                added = true;
+                break;
+            }
+        }
+        //Creates new queue and assigns to printer if queue with config doesn't exist
+        if(!added){
+            JobQueue queue = printer.createQueue();
+            this.queues.add(queue);
+            printer.setQueue(queue);
+        }
     }
 
     /* private void createQueues(){

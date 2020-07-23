@@ -18,6 +18,7 @@ public class JobQueue {
         this.paperColour = paperColour;
         this.inkColour = inkColour;
         this.jobs = new LinkedList<Job>();
+        System.out.println("Created " + this);
     }
 
     public boolean needsStapling() {
@@ -49,22 +50,26 @@ public class JobQueue {
     }
 
     public boolean checkJob(Job job){
-        boolean stapling = this.needsStapling() == job.needsStapling();
-        boolean fast = this.isFast() == job.isFast();
-        boolean paperSize = this.getPaperSize() == job.getPaperSize();
-        boolean paperColour = this.getPaperColour() == job.getPaperColour();
-        boolean inkColour = this.getInkColour() == job.getInkColour();
+        boolean stapling = this.stapling == job.needsStapling();
+        boolean fast = this.isFast == job.isFast();
+        boolean paperSize = this.paperSize == job.getPaperSize();
+        boolean paperColour = this.paperColour == job.getPaperColour();
+        boolean inkColour = this.inkColour == job.getInkColour();
         return (stapling && fast && paperSize && paperColour && inkColour);
     }
 
     public String toString(){
         String s = "";
-        s += "JobQueue with following details has been created: \n";
+        s += "JobQueue with " + this.jobs.size() + " jobs: \n";
         s += " - stapling: " + this.stapling + ", ";
         s += "isFast: " + this.isFast + ", ";
         s += "paperSize: " + this.paperSize + ", ";
         s += "paperColour: " + this.paperColour + ", ";
         s += "inkColour: " + this.inkColour;
         return s;
+    }
+
+    public int getSize(){
+        return this.jobs.size();
     }
 }

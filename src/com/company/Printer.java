@@ -8,6 +8,7 @@ public class Printer {
     PaperColour paperColour;
     InkColour inkColour;
     boolean busy;
+    JobQueue queue;
 
     public Printer(String name, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
         this.name = name;
@@ -59,6 +60,21 @@ public class Printer {
         this.busy = true;
     }
 
+    public boolean checkQueue(JobQueue queue){
+        boolean stapling = this.stapling == queue.needsStapling();
+        boolean fast = this.isFast == queue.isFast();
+        boolean paperSize = this.paperSize == queue.getPaperSize();
+        boolean paperColour = this.paperColour == queue.getPaperColour();
+        boolean inkColour = this.inkColour == queue.getInkColour();
+        return (stapling && fast && paperSize && paperColour && inkColour);
+    }
 
+    public JobQueue createQueue(){
+        return (new JobQueue(this.stapling, this.isFast, this.paperSize, this.paperColour, this.inkColour));
+    }
+
+    public void setQueue(JobQueue queue){
+        this.queue = queue;
+    }
 
 }
