@@ -47,4 +47,24 @@ public class JobQueue {
     public Job removeJob(){
         return this.jobs.remove();
     }
+
+    public boolean checkJob(Job job){
+        boolean stapling = this.needsStapling() == job.needsStapling();
+        boolean fast = this.isFast() == job.isFast();
+        boolean paperSize = this.getPaperSize() == job.getPaperSize();
+        boolean paperColour = this.getPaperColour() == job.getPaperColour();
+        boolean inkColour = this.getInkColour() == job.getInkColour();
+        return (stapling && fast && paperSize && paperColour && inkColour);
+    }
+
+    public String toString(){
+        String s = "";
+        s += "JobQueue with following details has been created: \n";
+        s += " - stapling: " + this.stapling + ", ";
+        s += "isFast: " + this.isFast + ", ";
+        s += "paperSize: " + this.paperSize + ", ";
+        s += "paperColour: " + this.paperColour + ", ";
+        s += "inkColour: " + this.inkColour;
+        return s;
+    }
 }

@@ -21,29 +21,23 @@ public class Shop {
 
     public void newJob(Job job) {
         //assign job to correct queue
-        int i = 0;
-        while (true) {
-            //if no queues exist with config for job/no queues exist at all, create queue with correct config and add job
-            if (i == this.queues.size()) {
-                JobQueue queue = new JobQueue(job.needsStapling(), job.isFast(), job.getPaperSize(), job.getPaperColour(), job.getInkColour());
+        //find appropriate queue and add job to queue
+        boolean added = false;
+        for(JobQueue queue: this.queues){
+            if(queue.checkJob(job)){
                 queue.addJob(job);
-                this.queues.add(queue);
+                added = true;
                 break;
             }
-            //find appropriate queue and add job to queue
-            JobQueue currentQueue = this.queues.get(i);
-            if ((currentQueue.needsStapling() == job.needsStapling()) &&
-                    (currentQueue.isFast == job.isFast()) &&
-                    (currentQueue.getPaperSize() == job.getPaperSize()) &&
-                    (currentQueue.getPaperColour() == job.getPaperColour()) &&
-                    (currentQueue.getInkColour() == job.getInkColour())) {
-                this.queues.get(i).addJob(job);
-                break;
-            }
-            i++;
         }
-        String s = ("New job for " + job.getCustomerName() + " has been created");
-        System.out.println(s);
+        //if no queues exist with config for job/no queues exist at all, create queue with correct config and add job
+        if(!added){
+            JobQueue queue = new JobQueue(job.needsStapling(), job.isFast(), job.getPaperSize(), job.getPaperColour(), job.getInkColour());
+            this.queues.add(queue);
+            queue.addJob(job);
+            System.out.println(queue);
+        }
+        System.out.println(job);
     }
 
     private void createPrinters() {
