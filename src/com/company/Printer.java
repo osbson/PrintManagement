@@ -18,6 +18,7 @@ public class Printer {
         this.paperColour = paperColour;
         this.inkColour = inkColour;
         this.busy = false;
+        System.out.println("Created " + this);
     }
 
     public String getName() {
@@ -75,6 +76,18 @@ public class Printer {
 
     public void setQueue(JobQueue queue){
         this.queue = queue;
+    }
+
+    public String toString(){
+        String s = "Printer(";
+        s += "name: "         + this.name         + ", ";
+        s += "stapling: "     + this.stapling     + ", ";
+        s += "isFast: "       + this.isFast       + ", ";
+        s += "paperSize: "    + this.paperSize    + ", ";
+        s += "paperColour: "  + this.paperColour  + ", ";
+        s += "inkColor: "     + this.inkColour    + "";
+        s += ")";
+        return s;
     }
 
 }

@@ -59,13 +59,13 @@ public class JobQueue {
     }
 
     public String toString(){
-        String s = "";
-        s += "JobQueue with " + this.jobs.size() + " jobs: \n";
-        s += " - stapling: " + this.stapling + ", ";
-        s += "isFast: " + this.isFast + ", ";
-        s += "paperSize: " + this.paperSize + ", ";
-        s += "paperColour: " + this.paperColour + ", ";
-        s += "inkColour: " + this.inkColour;
+        String s = "Queue(";
+        s += "stapling: "     + this.stapling     + ", ";
+        s += "isFast: "       + this.isFast       + ", ";
+        s += "paperSize: "    + this.paperSize    + ", ";
+        s += "paperColour: "  + this.paperColour  + ", ";
+        s += "inkColor: "     + this.inkColour    + "";
+        s += ")";
         return s;
     }
 

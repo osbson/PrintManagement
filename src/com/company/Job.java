@@ -59,11 +59,11 @@ public class Job {
     public String toString(){
         String s = "Job(";
         s += "customerName: " + this.customerName + ", ";
-        s += "staping: "      + this.stapling      + ", ";
+        s += "stapling: "     + this.stapling     + ", ";
         s += "isFast: "       + this.isFast       + ", ";
         s += "paperSize: "    + this.paperSize    + ", ";
         s += "paperColour: "  + this.paperColour  + ", ";
-        s += "inkColor: "     + this.inkColour     + ", ";
+        s += "inkColor: "     + this.inkColour    + ", ";
         s += "pageCount: "    + this.pageCount    + ", ";
         s += "pagesLeft: "    + this.pagesLeft    + "";
         s += ")";
