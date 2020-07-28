@@ -18,14 +18,10 @@ public class Main {
         System.out.println();
 
         shop.newPrinter("HPsuperfast", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black);
-        System.out.println();
         shop.newPrinter("SAMSUNG01", false, false, PaperSize.Medium, PaperColour.Yellow, InkColour.Red);
-        System.out.println();
         shop.newPrinter("SONYportable254", true, false, PaperSize.Small, PaperColour.Blue, InkColour.Red);
-        System.out.println();
         shop.newPrinter("CANON3000", true, false, PaperSize.Medium, PaperColour.White, InkColour.Blue);
-        System.out.println();
-        shop.newPrinter("HPoriginals01", false, true, PaperSize.Large, PaperColour.White, InkColour.Black);
+        shop.newPrinter("HPoriginals01", true, false, PaperSize.Large, PaperColour.White, InkColour.Blue);
 
         System.out.println();
         System.out.println("#########################################");
@@ -33,19 +29,24 @@ public class Main {
         System.out.println("#########################################");
         System.out.println();
 
-        shop.newJob("Sue", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black, 40);
-        System.out.println();
-        shop.newJob("John",false, true, PaperSize.Medium, PaperColour.White, InkColour.Red, 100);
-        System.out.println();
-        shop.newJob("Mark",true, false, PaperSize.Small, PaperColour.Yellow, InkColour.Black, 20);
-        System.out.println();
-        shop.newJob("Dean",false, false, PaperSize.Medium, PaperColour.Blue, InkColour.Blue, 60);
-        System.out.println();
-        shop.newJob("Ben",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 70);
-        System.out.println();
-        shop.newJob("Charlie",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 70);
+        for(int i = 0; i < 3; i++) shop.tick();
+        shop.newJob("Sue", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black, 4);
+        for(int i = 0; i < 3; i++) shop.tick();
+        shop.newJob("John",false, true, PaperSize.Medium, PaperColour.White, InkColour.Red, 2);
+        for(int i = 0; i < 1; i++) shop.tick();
+        shop.newJob("Mark",true, false, PaperSize.Small, PaperColour.Yellow, InkColour.Black, 5);
+        for(int i = 0; i < 2; i++) shop.tick();
+        shop.newJob("Dean",false, false, PaperSize.Medium, PaperColour.Blue, InkColour.Blue, 3);
+        for(int i = 0; i < 2; i++) shop.tick();
+        shop.newJob("Ben",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 2);
+        for(int i = 0; i < 2; i++) shop.tick();
+        shop.newJob("Charlie",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 3);
+        for(int i = 0; i < 10; i++) shop.tick();
 
         System.out.println();
+
+
+
         System.out.println("Closing shop Ore.B Printing LTD");
 
 

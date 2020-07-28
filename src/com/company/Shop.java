@@ -6,10 +6,12 @@ import java.util.List;
 public class Shop {
     List<JobQueue> queues;
     List<Printer> printers;
+    int step;
 
     public Shop() {
         this.queues = new ArrayList<JobQueue>();
         this.printers = new ArrayList<Printer>();
+        this.step = 0;
     }
 
     public List getQueues() {
@@ -22,15 +24,15 @@ public class Shop {
         //assign job to correct queue
         //find appropriate queue and add job to queue
         boolean added = false;
-        for(JobQueue queue: this.queues){
-            if(queue.checkJob(job)){
+        for (JobQueue queue : this.queues) {
+            if (queue.checkJob(job)) {
                 queue.addJob(job);
                 added = true;
                 break;
             }
         }
         //if no queues exist with config for job/no queues exist at all, create queue with correct config and add job
-        if(!added){
+        if (!added) {
             JobQueue queue = job.createQueue();
             this.queues.add(queue);
             queue.addJob(job);
@@ -42,19 +44,36 @@ public class Shop {
         this.printers.add(printer);
         //Assigns queue to printer if queue with config exists
         boolean added = false;
-        for(JobQueue queue: this.queues){
-            if(printer.checkQueue(queue)){
+        for (JobQueue queue : this.queues) {
+            if (printer.checkQueue(queue)) {
                 printer.setQueue(queue);
                 added = true;
                 break;
             }
         }
         //Creates new queue and assigns to printer if queue with config doesn't exist
-        if(!added){
+        if (!added) {
             JobQueue queue = printer.createQueue();
             this.queues.add(queue);
             printer.setQueue(queue);
         }
+    }
+
+    public void changePrinter(Printer printer, InkColour inkColour, PaperColour paperColour) {
+        //call printer and set ink colour and paper colour to new values
+        //check and reassign queues as needed
+    }
+
+    public void tick() {
+        System.out.println("Starting step: " + this.step);
+        for (Printer printer : this.printers) {
+            if (printer.isBusy()) {
+                printer.print();
+            } else {
+                printer.nextJob();
+            }
+        }
+        this.step += 1;
     }
 
     /* private void createQueues(){

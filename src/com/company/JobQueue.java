@@ -72,4 +72,8 @@ public class JobQueue {
     public int getSize(){
         return this.jobs.size();
     }
+
+    public boolean isEmpty(){
+        return this.jobs.isEmpty();
+    }
 }

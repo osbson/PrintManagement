@@ -8,7 +8,7 @@ public class Job {
     PaperColour paperColour;
     InkColour inkColour;
     int pageCount;
-    int pagesLeft;
+    private int pagesLeft;
 
     public Job(String customerName, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour, int pageCount) {
         this.customerName = customerName;
@@ -54,6 +54,7 @@ public class Job {
 
     public void printPage() {
         pagesLeft -= 1;
+        System.out.println("Printed " + this);
     }
 
     public String toString(){

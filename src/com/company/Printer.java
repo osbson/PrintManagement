@@ -9,6 +9,7 @@ public class Printer {
     InkColour inkColour;
     boolean busy;
     JobQueue queue;
+    Job currentJob;
 
     public Printer(String name, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour) {
         this.name = name;
@@ -57,11 +58,25 @@ public class Printer {
         this.inkColour = inkColour;
     }
 
-    public void print(Job job){
-        this.busy = true;
+    public void print() {
+        if (this.currentJob.getPagesLeft() > 0) {
+            this.busy = true;
+            this.currentJob.printPage();
+        } else {
+            this.busy = false;
+            this.currentJob = null;
+        }
     }
 
-    public boolean checkQueue(JobQueue queue){
+    public void nextJob() {
+        if (!this.queue.isEmpty()) {
+            this.currentJob = this.queue.removeJob();
+            this.busy = true;
+            System.out.println("Assigned " + this.currentJob + " to " + this);
+        }
+    }
+
+    public boolean checkQueue(JobQueue queue) {
         boolean stapling = this.stapling == queue.needsStapling();
         boolean fast = this.isFast == queue.isFast();
         boolean paperSize = this.paperSize == queue.getPaperSize();
@@ -70,22 +85,22 @@ public class Printer {
         return (stapling && fast && paperSize && paperColour && inkColour);
     }
 
-    public JobQueue createQueue(){
+    public JobQueue createQueue() {
         return (new JobQueue(this.stapling, this.isFast, this.paperSize, this.paperColour, this.inkColour));
     }
 
-    public void setQueue(JobQueue queue){
+    public void setQueue(JobQueue queue) {
         this.queue = queue;
     }
 
-    public String toString(){
+    public String toString() {
         String s = "Printer(";
-        s += "name: "         + this.name         + ", ";
-        s += "stapling: "     + this.stapling     + ", ";
-        s += "isFast: "       + this.isFast       + ", ";
-        s += "paperSize: "    + this.paperSize    + ", ";
-        s += "paperColour: "  + this.paperColour  + ", ";
-        s += "inkColor: "     + this.inkColour    + "";
+        s += "name: " + this.name + ", ";
+        s += "stapling: " + this.stapling + ", ";
+        s += "isFast: " + this.isFast + ", ";
+        s += "paperSize: " + this.paperSize + ", ";
+        s += "paperColour: " + this.paperColour + ", ";
+        s += "inkColor: " + this.inkColour + "";
         s += ")";
         return s;
     }
