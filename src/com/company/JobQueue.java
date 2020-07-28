@@ -64,7 +64,8 @@ public class JobQueue {
         s += "isFast: "       + this.isFast       + ", ";
         s += "paperSize: "    + this.paperSize    + ", ";
         s += "paperColour: "  + this.paperColour  + ", ";
-        s += "inkColor: "     + this.inkColour    + "";
+        s += "inkColor: "     + this.inkColour    + ", ";
+        s += "jobCount: "     + this.jobs.size()  + "";
         s += ")";
         return s;
     }

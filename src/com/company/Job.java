@@ -54,7 +54,6 @@ public class Job {
 
     public void printPage() {
         pagesLeft -= 1;
-        System.out.println("Printed " + this);
     }
 
     public String toString(){

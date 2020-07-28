@@ -44,9 +44,6 @@ public class Main {
         for(int i = 0; i < 10; i++) shop.tick();
 
         System.out.println();
-
-
-
         System.out.println("Closing shop Ore.B Printing LTD");
 
 

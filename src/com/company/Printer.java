@@ -62,8 +62,10 @@ public class Printer {
         if (this.currentJob.getPagesLeft() > 0) {
             this.busy = true;
             this.currentJob.printPage();
+            System.out.println("Printed " + this.currentJob);
         } else {
             this.busy = false;
+            System.out.println("Completed " + this.currentJob);
             this.currentJob = null;
         }
     }
@@ -91,6 +93,7 @@ public class Printer {
 
     public void setQueue(JobQueue queue) {
         this.queue = queue;
+        System.out.println("Assigned " + this.queue + " to " + this);
     }
 
     public String toString() {
