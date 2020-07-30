@@ -6,7 +6,6 @@ printer,CANON3000,FALSE,TRUE,Medium,White,Blue,
 printer,HPoriginals01,TRUE,FALSE,Large,White,Blue,
 idle,,,,,,,
 job,Sue,TRUE,TRUE,Large,Blue,Black,40
-idle,,,,,,,
 job,Sam,TRUE,TRUE,Large,Blue,Black,40
 job,Ore,TRUE,TRUE,Large,Blue,Black,40
 job,John,FALSE,TRUE,Medium,White,Red,20
