@@ -52,8 +52,11 @@ public class Job {
         return pagesLeft;
     }
 
-    public void printPage() {
-        pagesLeft -= 1;
+    public void printPages(int pages) {
+        pagesLeft -= pages;
+        if (pagesLeft < 0){
+            pagesLeft = 0;
+        }
     }
 
     public String toString(){

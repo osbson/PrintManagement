@@ -2,60 +2,44 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+//      QUESTIONS FOR CLARIFICATION
+//        What does Simulation paragraph 2 mean (how many entries in each unit of time, are all jobs printed together etc)
+//          - are all entries entered before shop starts ticking?
+//        Changing printer config every hour? (is it in the file or in the program?)
+//
+
         System.out.println();
         System.out.println("Welcome to the print shop!");
         System.out.println();
 
-        Shop shop = new Shop();
+        String simFile = "D:\\Users\\ore\\Print_Management\\IdeaProjects\\simulation.csv";
+        File file = new File(simFile);
 
-        System.out.println("#########################################");
-        System.out.println("Entering Printers:");
-        System.out.println("#########################################");
-        System.out.println();
-
-        shop.newPrinter("HPsuperfast", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black);
-        shop.newPrinter("SAMSUNG01", false, false, PaperSize.Medium, PaperColour.Yellow, InkColour.Red);
-        shop.newPrinter("SONYportable254", true, false, PaperSize.Small, PaperColour.Blue, InkColour.Red);
-        shop.newPrinter("CANON3000", true, false, PaperSize.Medium, PaperColour.White, InkColour.Blue);
-        shop.newPrinter("HPoriginals01", true, false, PaperSize.Large, PaperColour.White, InkColour.Blue);
-
-        System.out.println();
-        System.out.println("#########################################");
-        System.out.println("Entering jobs:");
-        System.out.println("#########################################");
-        System.out.println();
-
-        for(int i = 0; i < 3; i++) shop.tick();
-        shop.newJob("Sue", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black, 4);
-        for(int i = 0; i < 3; i++) shop.tick();
-        shop.newJob("John",false, true, PaperSize.Medium, PaperColour.White, InkColour.Red, 2);
-        for(int i = 0; i < 1; i++) shop.tick();
-        shop.newJob("Mark",true, false, PaperSize.Small, PaperColour.Yellow, InkColour.Black, 5);
-        for(int i = 0; i < 2; i++) shop.tick();
-        shop.newJob("Dean",false, false, PaperSize.Medium, PaperColour.Blue, InkColour.Blue, 3);
-        for(int i = 0; i < 2; i++) shop.tick();
-        shop.newJob("Ben",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 2);
-        for(int i = 0; i < 2; i++) shop.tick();
-        shop.newJob("Charlie",true, false, PaperSize.Large, PaperColour.White, InkColour.Blue, 3);
-        for(int i = 0; i < 10; i++) shop.tick();
+        try {
+            Scanner scanner = new Scanner(file);
+            scanner.next();
+            Shop shop = new Shop();
+            while (scanner.hasNext()) {
+                shop.startTick();
+                String entry = scanner.next();
+                String[] values = entry.split(",");
+                shop.tick(values);
+                shop.endTick();
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         System.out.println();
         System.out.println("Closing shop Ore.B Printing LTD");
-
-
-
-
-//        Job a = new Job("Sue", true, true, PaperSize.Large, PaperColour.Blue, InkColour.Black, 40);
-//        Job b = new Job("John",false, true, PaperSize.Medium, PaperColour.White, InkColour.Red, 100);
-//        Job c = a;
-//        System.out.println(a.getPagesLeft());
-//        System.out.println(c.getPagesLeft());
-//        c.printPage();
-//        System.out.println(a.getPagesLeft());
-//        System.out.println(c.getPagesLeft());
+        System.out.println();
     }
 }

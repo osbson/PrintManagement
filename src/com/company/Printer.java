@@ -61,8 +61,12 @@ public class Printer {
     public void print() {
         if (this.currentJob.getPagesLeft() > 0) {
             this.busy = true;
-            this.currentJob.printPage();
-            System.out.println("Printed " + this.currentJob);
+            if (this.isFast){
+                this.currentJob.printPages(30);
+            } else {
+                this.currentJob.printPages(10);
+            }
+            System.out.println("Printing " + this.currentJob);
         } else {
             this.busy = false;
             System.out.println("Completed " + this.currentJob);
@@ -76,6 +80,12 @@ public class Printer {
             this.busy = true;
             System.out.println("Assigned " + this.currentJob + " to " + this);
         }
+    }
+
+    public void change(PaperColour paperColour, InkColour inkColour){
+        this.paperColour = paperColour;
+        this.inkColour = inkColour;
+        System.out.println("Changed " + this);
     }
 
     public boolean checkQueue(JobQueue queue) {
@@ -98,12 +108,12 @@ public class Printer {
 
     public String toString() {
         String s = "Printer(";
-        s += "name: " + this.name + ", ";
-        s += "stapling: " + this.stapling + ", ";
-        s += "isFast: " + this.isFast + ", ";
-        s += "paperSize: " + this.paperSize + ", ";
-        s += "paperColour: " + this.paperColour + ", ";
-        s += "inkColor: " + this.inkColour + "";
+        s += "name: "         + this.name         + ", ";
+        s += "stapling: "     + this.stapling     + ", ";
+        s += "isFast: "       + this.isFast       + ", ";
+        s += "paperSize: "    + this.paperSize    + ", ";
+        s += "paperColour: "  + this.paperColour  + ", ";
+        s += "inkColor: "     + this.inkColour    + "";
         s += ")";
         return s;
     }

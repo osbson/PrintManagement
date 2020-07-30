@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class Shop {
     List<JobQueue> queues;
@@ -11,7 +12,7 @@ public class Shop {
     public Shop() {
         this.queues = new ArrayList<JobQueue>();
         this.printers = new ArrayList<Printer>();
-        this.step = 0;
+        this.step = 1;
     }
 
     public List getQueues() {
@@ -59,13 +60,64 @@ public class Shop {
         }
     }
 
-    public void changePrinter(Printer printer, InkColour inkColour, PaperColour paperColour) {
-        //call printer and set ink colour and paper colour to new values
-        //check and reassign queues as needed
+    public void startTick() {
+        System.out.println("Starting step: " + this.step);
     }
 
-    public void tick() {
-        System.out.println("Starting step: " + this.step);
+    public void endTick() {
+        System.out.println("Ending step: " + this.step);
+        step += 1;
+        System.out.println();
+    }
+
+    public void tick(String[] values) {
+        if (values[0].equals("printer")) {
+            String name = values[1];
+            Boolean stapling = Boolean.parseBoolean(values[2]);
+            Boolean isFast = Boolean.parseBoolean(values[3]);
+            PaperSize paperSize = PaperSize.valueOf(values[4]);
+            PaperColour paperColour = PaperColour.valueOf(values[5]);
+            InkColour inkColour = InkColour.valueOf(values[6]);
+            this.newPrinter(name, stapling, isFast, paperSize, paperColour, inkColour);
+        } else if (values[0].equals("job")) {
+            String name = values[1];
+            Boolean stapling = Boolean.parseBoolean(values[2]);
+            Boolean isFast = Boolean.parseBoolean(values[3]);
+            PaperSize paperSize = PaperSize.valueOf(values[4]);
+            PaperColour paperColour = PaperColour.valueOf(values[5]);
+            InkColour inkColour = InkColour.valueOf(values[6]);
+            int pageCount = Integer.parseInt(values[7]);
+            this.newJob(name, stapling, isFast, paperSize, paperColour, inkColour, pageCount);
+        } else if (values[0].equals("change")) {
+            String name = values[1];
+            PaperColour paperColour = PaperColour.valueOf(values[5]);
+            InkColour inkColour = InkColour.valueOf(values[6]);
+            for (Printer printer : this.printers) {
+                if (printer.getName().equals(name)) {
+                    printer.change(paperColour, inkColour);
+                    //Assigns queue to printer if queue with config exists
+                    boolean added = false;
+                    for (JobQueue queue : this.queues) {
+                        if (printer.checkQueue(queue)) {
+                            printer.setQueue(queue);
+                            added = true;
+                            break;
+                        }
+                    }
+                    //Creates new queue and assigns to printer if queue with config doesn't exist
+                    if (!added) {
+                        JobQueue queue = printer.createQueue();
+                        this.queues.add(queue);
+                        printer.setQueue(queue);
+                    }
+                    break;
+                }
+            }
+        } else if (values[0].equals("idle")) {
+            System.out.println("idle");
+        } else {
+            System.out.println("Entry not recognised " + values[0]);
+        }
         for (Printer printer : this.printers) {
             if (printer.isBusy()) {
                 printer.print();
@@ -73,7 +125,6 @@ public class Shop {
                 printer.nextJob();
             }
         }
-        this.step += 1;
     }
 
     /* private void createQueues(){
