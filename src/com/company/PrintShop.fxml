@@ -1,14 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.company.PrintShop"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="494.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.PrintShop">
+   <children>
+      <VBox layoutX="105.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="NEW JOB">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Name" />
+                              <TextField prefWidth="70.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Stapling" />
+                              <CheckBox mnemonicParsing="false" text="CheckBox" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="isFast" />
+                              <CheckBox mnemonicParsing="false" text="CheckBox" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="paperSize" />
+                              <CheckBox mnemonicParsing="false" text="Small" />
+                              <CheckBox mnemonicParsing="false" text="Medium" />
+                              <CheckBox mnemonicParsing="false" text="Large" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="paperColour" />
+                              <CheckBox mnemonicParsing="false" text="Blue" />
+                              <CheckBox mnemonicParsing="false" text="White" />
+                              <CheckBox mnemonicParsing="false" text="Yellow" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="inkColour" />
+                              <CheckBox mnemonicParsing="false" text="Black" />
+                              <CheckBox mnemonicParsing="false" text="Red" />
+                              <CheckBox mnemonicParsing="false" text="Blue" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="pageCount" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Send" />
+                              <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="82.0" text="OK" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="263.0" prefWidth="967.0" text="PRINTERS">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="12.0" prefWidth="71.0" text="HPsuperfast  " />
+                                    <Label text="00" />
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="130.0" fitWidth="130.0">
+                                 <image>
+                                    <Image url="@../../../printer1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="SAMSUNG01  " />
+                                    <Label text="00" />
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="130.0" fitWidth="130.0">
+                                 <image>
+                                    <Image url="@../../../printer2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="SONYportable254  " />
+                                    <Label text="00" />
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="130.0" fitWidth="130.0">
+                                 <image>
+                                    <Image url="@../../../printer3.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="CANON3000  " />
+                                    <Label text="00" />
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="130.0" fitWidth="130.0">
+                                 <image>
+                                    <Image url="@../../../printer4.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="HPoriginals01  " />
+                                    <Label text="00" />
+                                 </children>
+                              </HBox>
+                              <ImageView fitHeight="130.0" fitWidth="130.0">
+                                 <image>
+                                    <Image url="@../../../printer5.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content></TitledPane>
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="RECONFIGURE PRINTER">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Printer" />
+                              <CheckBox mnemonicParsing="false" text="HPsuperfast" />
+                              <CheckBox mnemonicParsing="false" text="SAMSUNG01" />
+                              <CheckBox mnemonicParsing="false" text="SONYportable254" />
+                              <CheckBox mnemonicParsing="false" text="CANON3000" />
+                              <CheckBox mnemonicParsing="false" text="HPoriginals01" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="paperColour" />
+                              <CheckBox mnemonicParsing="false" text="Blue" />
+                              <CheckBox mnemonicParsing="false" text="CheckBox" />
+                              <CheckBox mnemonicParsing="false" text="White" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="inkColour" />
+                              <CheckBox mnemonicParsing="false" text="Black" />
+                              <CheckBox mnemonicParsing="false" text="Red" />
+                              <CheckBox mnemonicParsing="false" text="Blue" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Send" />
+                              <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="92.0" text="OK" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content></TitledPane>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
