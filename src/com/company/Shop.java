@@ -21,9 +21,13 @@ public class Shop {
         this.step = 1;
     }
 
-    public List getQueues() {
+    public List<Printer> getPrinters() {
+        return printers;
+    }
+
+    public List<JobQueue> getQueues() {
         //return list of queues, each shown as a list of names of customers
-        return null;
+        return queues;
     }
 
     public void newJob(String customerName, boolean stapling, boolean isFast, PaperSize paperSize, PaperColour paperColour, InkColour inkColour, int pageCount) {

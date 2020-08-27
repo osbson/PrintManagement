@@ -7,6 +7,7 @@
 package com.company;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class JobQueue {
@@ -82,5 +83,9 @@ public class JobQueue {
 
     public boolean isEmpty(){
         return this.jobs.isEmpty();
+    }
+
+    public List<Job> getJobs(){
+        return (List) jobs;
     }
 }

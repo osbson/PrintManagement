@@ -1,69 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="494.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.PrintShop">
+<AnchorPane prefHeight="517.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
    <children>
       <VBox layoutX="105.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TitledPane prefHeight="200.0" prefWidth="200.0" text="NEW JOB">
                <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="Name" />
-                              <TextField prefWidth="70.0" />
+                              <TextField fx:id="jobName" prefWidth="70.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="Stapling" />
-                              <CheckBox mnemonicParsing="false" text="CheckBox" />
+                              <CheckBox fx:id="jobStapling" mnemonicParsing="false" text="CheckBox" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="isFast" />
-                              <CheckBox mnemonicParsing="false" text="CheckBox" />
+                              <CheckBox fx:id="jobIsFast" mnemonicParsing="false" text="CheckBox" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="paperSize" />
-                              <CheckBox mnemonicParsing="false" text="Small" />
-                              <CheckBox mnemonicParsing="false" text="Medium" />
-                              <CheckBox mnemonicParsing="false" text="Large" />
+                              <RadioButton fx:id="jobPaperSizeSmall" mnemonicParsing="false" text="Small">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="jobPaperSize" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="jobPaperSizeMedium" mnemonicParsing="false" text="Medium" toggleGroup="$jobPaperSize" />
+                              <RadioButton fx:id="jobPaperSizeLarge" mnemonicParsing="false" text="Large" toggleGroup="$jobPaperSize" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="paperColour" />
-                              <CheckBox mnemonicParsing="false" text="Blue" />
-                              <CheckBox mnemonicParsing="false" text="White" />
-                              <CheckBox mnemonicParsing="false" text="Yellow" />
+                              <RadioButton fx:id="jobPaperColourBlue" mnemonicParsing="false" text="Blue">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="jobPaperColour" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="jobPaperColourWhite" mnemonicParsing="false" text="White" toggleGroup="$jobPaperColour" />
+                              <RadioButton fx:id="jobPaperColourYellow" mnemonicParsing="false" text="Yellow" toggleGroup="$jobPaperColour" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="inkColour" />
-                              <CheckBox mnemonicParsing="false" text="Black" />
-                              <CheckBox mnemonicParsing="false" text="Red" />
-                              <CheckBox mnemonicParsing="false" text="Blue" />
+                              <RadioButton fx:id="jobInkColourBlack" mnemonicParsing="false" text="Black">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="jobInkColour" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="jobInkColourRed" mnemonicParsing="false" text="Red" toggleGroup="$jobInkColour" />
+                              <RadioButton fx:id="jobInkColourBlue" mnemonicParsing="false" text="Blue" toggleGroup="$jobInkColour" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="pageCount" />
-                              <TextField />
+                              <TextField fx:id="jobPageCount" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="Send" />
-                              <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="82.0" text="OK" />
+                              <Button fx:id="jobSend" mnemonicParsing="false" onAction="#tickJob" prefHeight="71.0" prefWidth="82.0" text="OK" />
                            </children>
                         </VBox>
                      </children>
@@ -72,91 +80,81 @@
             </TitledPane>
             <TitledPane prefHeight="263.0" prefWidth="967.0" text="PRINTERS">
                <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <HBox layoutX="29.6" prefHeight="200.0" prefWidth="429.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label prefHeight="12.0" prefWidth="71.0" text="HPsuperfast  " />
-                                    <Label text="00" />
+                                    <HBox prefHeight="21.0" prefWidth="100.0">
+                                       <children>
+                                          <Label prefHeight="12.0" prefWidth="71.0" text="HPsuperfast  " />
+                                          <Label text="00" />
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="printQueue1" prefHeight="200.0" prefWidth="200.0" />
                                  </children>
-                              </HBox>
-                              <ImageView fitHeight="130.0" fitWidth="130.0">
-                                 <image>
-                                    <Image url="@../../../printer1.png" />
-                                 </image>
-                              </ImageView>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="4.0" prefWidth="100.0">
+                                       <children>
+                                          <Label prefHeight="0.0" prefWidth="76.0" text="SAMSUNG01  " />
+                                          <Label text="00" />
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="printQueue2" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="2.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="SONYportable254  " />
+                                          <Label text="00" />
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="printQueue3" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="CANON3000  " />
+                                          <Label text="00" />
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="printQueue4" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="0.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="HPoriginals01  " />
+                                          <Label text="00" />
+                                       </children>
+                                    </HBox>
+                                    <ListView fx:id="printQueue5" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        </HBox>
+                        <VBox prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Label text="SAMSUNG01  " />
-                                    <Label text="00" />
-                                 </children>
-                              </HBox>
-                              <ImageView fitHeight="130.0" fitWidth="130.0">
-                                 <image>
-                                    <Image url="@../../../printer2.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Label text="SONYportable254  " />
-                                    <Label text="00" />
-                                 </children>
-                              </HBox>
-                              <ImageView fitHeight="130.0" fitWidth="130.0">
-                                 <image>
-                                    <Image url="@../../../printer3.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Label text="CANON3000  " />
-                                    <Label text="00" />
-                                 </children>
-                              </HBox>
-                              <ImageView fitHeight="130.0" fitWidth="130.0">
-                                 <image>
-                                    <Image url="@../../../printer4.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <Label text="HPoriginals01  " />
-                                    <Label text="00" />
-                                 </children>
-                              </HBox>
-                              <ImageView fitHeight="130.0" fitWidth="130.0">
-                                 <image>
-                                    <Image url="@../../../printer5.png" />
-                                 </image>
-                              </ImageView>
+                              <Label text="General Queue" />
+                              <ListView fx:id="printQueueGeneral" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                         </VBox>
                      </children>
-                  </HBox>
+                  </AnchorPane>
                </content></TitledPane>
             <TitledPane prefHeight="200.0" prefWidth="200.0" text="RECONFIGURE PRINTER">
                <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="102.0" prefWidth="123.0">
                            <children>
                               <Label text="Printer" />
                               <CheckBox mnemonicParsing="false" text="HPsuperfast" />
@@ -169,17 +167,23 @@
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="paperColour" />
-                              <CheckBox mnemonicParsing="false" text="Blue" />
-                              <CheckBox mnemonicParsing="false" text="CheckBox" />
-                              <CheckBox mnemonicParsing="false" text="White" />
+                              <RadioButton mnemonicParsing="false" text="Blue">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="printerPaperColour" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton mnemonicParsing="false" text="White" toggleGroup="$printerPaperColour" />
+                              <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$printerPaperColour" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="inkColour" />
-                              <CheckBox mnemonicParsing="false" text="Black" />
-                              <CheckBox mnemonicParsing="false" text="Red" />
-                              <CheckBox mnemonicParsing="false" text="Blue" />
+                              <RadioButton mnemonicParsing="false" text="Black">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="printerInkColour" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$printerInkColour" />
+                              <RadioButton mnemonicParsing="false" text="Blue" toggleGroup="$printerInkColour" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
@@ -188,9 +192,11 @@
                               <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="92.0" text="OK" />
                            </children>
                         </VBox>
+                        <Button fx:id="shopIdle" mnemonicParsing="false" onAction="#tickIdle" text="Step" />
                      </children>
                   </HBox>
                </content></TitledPane>
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="ADD PRINTER" />
          </children>
       </VBox>
    </children>

@@ -107,6 +107,10 @@ public class Printer {
         return (new JobQueue(this.stapling, this.isFast, this.paperSize, this.paperColour, this.inkColour));
     }
 
+    public JobQueue getQueue(){
+        return this.queue;
+    }
+
     public void setQueue(JobQueue queue) {
         this.queue = queue;
         System.out.println("Assigned " + this.queue + " to " + this);

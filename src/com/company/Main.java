@@ -1,51 +1,31 @@
-/*
-*
-* Author: Ore Benson
-*
-* */
 
 package com.company;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+public class Main extends Application {
 
-public class Main {
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getResource("PrintShopNew.fxml"));
+        Controller controller = new Controller();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Print Shop");
+        primaryStage.show();
+    }
 
     public static void main(String[] args) {
-//      QUESTIONS FOR CLARIFICATION
-//        What does Simulation paragraph 2 mean (how many entries in each unit of time, are all jobs printed together etc)
-//          - are all entries entered before shop starts ticking?
-//        Changing printer config every hour? (is it in the file or in the program?)
-//
-
-        System.out.println();
-        System.out.println("Welcome to the print shop!");
-        System.out.println();
-
-        String simFile = "D:\\Users\\ore\\Print_Management\\IdeaProjects\\simulation.csv";
-        File file = new File(simFile);
-
-        try {
-            Scanner scanner = new Scanner(file);
-            scanner.next();
-            Shop shop = new Shop();
-            while (scanner.hasNext()) {
-                shop.startTick();
-                String entry = scanner.next();
-                String[] values = entry.split(",");
-                shop.tick(values);
-                shop.endTick();
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println();
-        System.out.println("Closing shop Ore.B Printing LTD");
-        System.out.println();
+        launch(args);
     }
 }

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Controller">
+   <children>
+      <SplitPane dividerPositions="0.2, 0.8" layoutX="38.0" layoutY="40.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                      <TitledPane animated="false" collapsible="false" text="Shop Details">
+                           <content>
+                              <VBox prefHeight="128.0" prefWidth="155.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#tickIdle" text="Tick" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="New Job">
+                           <content>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Job Name" />
+                                          <TextField fx:id="jobName" prefHeight="25.0" prefWidth="100.0" />
+                                       </children>
+                                    </VBox>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <CheckBox fx:id="jobStapling" mnemonicParsing="false" text="Stapling" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <CheckBox fx:id="jobIsFast" mnemonicParsing="false" text="Fast" />
+                                       </children>
+                                    </HBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Paper Size" />
+                                          <RadioButton mnemonicParsing="false" text="Small">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="jobPaperSize" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Medium" toggleGroup="$jobPaperSize" />
+                                          <RadioButton mnemonicParsing="false" text="Large" toggleGroup="$jobPaperSize" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Paper Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="jobPaperColour" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="White" toggleGroup="$jobPaperColour" />
+                                          <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$jobPaperColour" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Ink Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Black">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="jobInkColour" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$jobInkColour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue" toggleGroup="$jobInkColour" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Page Count" />
+                                          <TextField fx:id="jobPageCount" />
+                                       </children>
+                                    </VBox>
+                                    <Button mnemonicParsing="false" onAction="#tickJob" text="Submit" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="204.0">
+               <children>
+                  <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="598.0" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TitledPane text="Printers" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="295.0" prefWidth="470.0">
+                                       <content>
+                                          <VBox prefWidth="470.0" spacing="20.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label fx:id="printLabel1" text="Label" />
+                                                      <ListView fx:id="printQueue1" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Label" />
+                                                      <ListView fx:id="printQueue2" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Label" />
+                                                      <ListView fx:id="printQueue3" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Label" />
+                                                      <ListView fx:id="printQueue4" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Label" />
+                                                      <ListView fx:id="printQueue5" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TitledPane text="All Jobs" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <VBox prefHeight="235.0" prefWidth="470.0" spacing="10.0">
+                                       <children>
+                                          <ListView fx:id="printQueueGeneral" prefHeight="235.0" prefWidth="470.0" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="156.0">
+               <children>
+                  <Accordion prefHeight="598.0" prefWidth="157.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <panes>
+                      <TitledPane animated="false" text="New Printer">
+                           <content>
+                              <VBox prefHeight="398.0" prefWidth="175.0" spacing="10.0">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Printer Name" />
+                                          <TextField fx:id="printName" prefHeight="25.0" prefWidth="100.0" />
+                                       </children>
+                                    </VBox>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <CheckBox fx:id="printStapling" mnemonicParsing="false" text="Stapling" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <CheckBox fx:id="printIsFast" mnemonicParsing="false" text="Fast" />
+                                       </children>
+                                    </HBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Paper Size" />
+                                          <RadioButton mnemonicParsing="false" text="Small">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="printPaperSize" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Medium" toggleGroup="$printPaperSize" />
+                                          <RadioButton mnemonicParsing="false" text="Large" toggleGroup="$printPaperSize" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Paper Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="printPaperColour" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="White" toggleGroup="$printPaperColour" />
+                                          <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$printPaperColour" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Ink Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Black">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="printInkColour" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$printInkColour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue" toggleGroup="$printInkColour" />
+                                       </children>
+                                    </VBox>
+                                    <Button mnemonicParsing="false" onAction="#tickPrinter" text="Add" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                      <TitledPane animated="false" text="Reconfigure Printer">
+                           <content>
+                              <VBox prefHeight="398.0" prefWidth="175.0" spacing="10.0">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Printer Name" />
+                                          <ChoiceBox fx:id="changePrinter" prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Paper Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="changePaperColour" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="White" toggleGroup="$changePaperColour" />
+                                          <RadioButton mnemonicParsing="false" text="Yellow" toggleGroup="$changePaperColour" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Ink Colour" />
+                                          <RadioButton mnemonicParsing="false" text="Black">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="changeInkColour" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Red" toggleGroup="$changeInkColour" />
+                                          <RadioButton mnemonicParsing="false" text="Blue" toggleGroup="$changeInkColour" />
+                                       </children>
+                                    </VBox>
+                                    <Button mnemonicParsing="false" onAction="#tickChange" text="Configure" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
